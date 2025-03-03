@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "b93cd072-477f-477e-bdef-60e5d92908d5",
+		"name": "collection-pipeline",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14626794",
+		"_collection_link": "https://www.postman.com/riradeve/workspace/workspacetestapp1/collection/14626794-b93cd072-477f-477e-bdef-60e5d92908d5?action=share&source=collection_link&creator=14626794"
+	},
+	"item": [
+		{
+			"name": "postuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Statut de réponse est 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"La réponse doit contenir toutes les informations\", function () {\r",
+							"    const responseData = pm.response.json(); \r",
+							"    console.log(pm.response.json())    \r",
+							"    pm.expect(responseData).to.have.property(\"username\");\r",
+							"    pm.expect(responseData).to.have.property(\"email\");\r",
+							"    pm.expect(responseData).to.not.have.property(\"password1\");\r",
+							"    pm.expect(responseData).to.not.have.property(\"password2\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"asami\",\r\n    \"email\": \"aahmed@gmail.com\",\r\n    \"password1\": \"ahahahah12\",\r\n    \"password2\": \"ahahahah12\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/register/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"id": "4fa979e9-abb5-471e-ab7d-4da43d860a0d",
+	"name": "IntegrationEnv",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://192.168.1.95:9091",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-03-03T15:17:07.839Z",
+	"_postman_exported_using": "Postman/11.34.5"
+}

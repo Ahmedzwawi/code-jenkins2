@@ -1,0 +1,29 @@
+pipeline{
+    agent{
+        docker{
+            image "postman/newman"
+            args '--entrypoint=""'
+            //ajout image pour installer htmletxtra
+        }
+    }
+
+    stages{
+        stage('verifier la version de newman'){
+            steps{
+                sh "newman --version"
+                   }
+        }
+        stage('test api'){
+            steps{
+                sh 'newman run collections/adduser -e varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
+                sh 'newman run collections/addcomment.json -e varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
+
+            }
+        }
+    }
+    post{
+        always{
+            junit 'newman-report.xml'
+        }
+    }
+}
