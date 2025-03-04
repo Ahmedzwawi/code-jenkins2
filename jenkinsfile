@@ -15,8 +15,8 @@ pipeline{
         }
         stage('test api'){
             steps{
-                sh 'newman run collections/adduser -e varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
-                sh 'newman run collections/addcomment.json -e varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
+                sh 'newman run collections/adduser -e collections/varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
+                sh 'newman run collections/addcomment.json -e collections/varenvironnement.json -r cli,htmlextra,junit --reporter-junit-export="newman-report.xml" --reporter-htmlextra-export="newman-report.html"'
 
             }
         }
